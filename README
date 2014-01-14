@@ -1,19 +1,5 @@
-Rails + Twitter Bootstrap
-============================================
+Bowling Scorecard app
+===========================================
 
-You can use this project as a starting point for a Rails web application. It requires Rails 4 and integrates Twitter Bootstrap.
+This application serves as a bowling score card. It is based off of the Twitter Bootstrap base application located at https://github.com/RailsApps/rails-bootstrap
 
-Twitter Bootstrap
-http://twitter.github.com/bootstrap/
-
-________________________
-
-For more information, please see the updated README file on GitHub:
-
-https://github.com/railsapps/rails-bootstrap
-
-________________________
-
-MIT License
-
-http://www.opensource.org/licenses/mit-license
