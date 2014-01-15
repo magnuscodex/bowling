@@ -1,3 +1,9 @@
 h1. Rails and Bootstrap Bowling Scorecard
 
 This is a Rails 4.0 application that uses Bootstrap 3.0 to score a game of bowling.
+
+To install and run the following steps are necessary:
+1) git clone https://github.com/magnuscodex/bowling.git
+2) bundle install --path ./vendor
+3) bundle exec rake test
+4) ./bin/rails server
