@@ -1,5 +1,6 @@
 class ScoreCardController < ApplicationController
 
+  # Score a scorecard.
   def new
     scores = [nil] * 10
     @form_vals = []
@@ -57,18 +58,26 @@ class ScoreCardController < ApplicationController
       @error_val[9] = "has-error"
     end
 
+    #Generate Frame scores
     score = [nil]*10
     for i in (0...10)
+      #Don't score past input errors.
       if @first_error == i
         break
       end
       score[i] = @form_vals[i][0] + @form_vals[i][1]
+      #If we had a strike
       if @form_vals[i][0] == 10
+        #The last two frames are scored differently since there is no
+        #frame 11
         if i == 9
           score[i] += @form_vals[i][2]
         else
           score[i] += @form_vals[i+1][0]
           if @form_vals[i+1][0] == 10
+            #When scoring a strike for frame 9 if frame 10 was also a
+            #strike then the second additional bowl comes from the first
+            #additional bowl in frame 10
             if i == 8
               score[i] += @form_vals[i+1][1]
             else
@@ -78,6 +87,7 @@ class ScoreCardController < ApplicationController
             score[i] += @form_vals[i+1][1]
           end
         end
+      #Scoring for a spare
       elsif score[i] == 10
         if i == 9
           score[i] += @form_vals[i][1]
@@ -87,6 +97,7 @@ class ScoreCardController < ApplicationController
       end
     end
 
+    #Running total up to a given frame
     @scores = []
     total = 0
     for i in (0...10)
