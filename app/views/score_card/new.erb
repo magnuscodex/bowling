@@ -1,0 +1,137 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Score Card</legend>
+
+
+<!-- Frame 1 -->
+<div class="control-group <%= @error_val[0] %>">
+  <label class="control-label" for="Frame1">Frame 1</label>
+  <div class="control-row">
+    <input id="Frame1_bowl1" name="Frame1_bowl1" type="number" placeholder="0" value="<%= @form_vals[0][0] %>" class="span1">
+    
+    <input id="Frame1_bowl2" name="Frame1_bowl2" type="number" placeholder="0" value="<%= @form_vals[0][1] %>" class="span1">
+
+    <input type="text" value="<%= @scores[0] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 2 -->
+<div class="control-group <%= @error_val[1] %>">
+  <label class="control-label" for="Frame2">Frame 2</label>
+  <div class="control-row">
+    <input id="Frame2_bowl1" name="Frame2_bowl1" type="number" placeholder="0" value="<%= @form_vals[1][0] %>" class="span1">
+
+    <input id="Frame2_bowl2" name="Frame2_bowl2" type="number" placeholder="0" value="<%= @form_vals[1][1] %>" class="span1">
+
+    <input type="text" value="<%= @scores[1] %>" readOnly>   
+  </div>
+</div>
+
+<!-- Frame 3 -->
+<div class="control-group <%= @error_val[2] %>">
+  <label class="control-label" for="Frame3">Frame 3</label>
+  <div class="control-row">
+    <input id="Frame3_bowl1" name="Frame3_bowl1" type="number" placeholder="0" value="<%= @form_vals[2][0] %>" class="span1">
+    
+    <input id="Frame3_bowl2" name="Frame3_bowl2" type="number" placeholder="0" value="<%= @form_vals[2][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[2] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 4 -->
+<div class="control-group <%= @error_val[3] %>">
+  <label class="control-label" for="Frame4">Frame 4</label>
+  <div class="control-row">
+    <input id="Frame4_bowl1" name="Frame4_bowl1" type="number" placeholder="0" value="<%= @form_vals[3][0] %>" class="span1">
+
+    <input id="Frame4_bowl2" name="Frame4_bowl2" type="number" placeholder="0" value="<%= @form_vals[3][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[3] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 5 -->
+<div class="control-group <%= @error_val[4] %>">
+  <label class="control-label" for="Frame5">Frame 5</label>
+  <div class="control-row">
+    <input id="Frame5_bowl1" name="Frame5_bowl1" type="number" placeholder="0" value="<%= @form_vals[4][0] %>" class="span1">
+    
+    <input id="Frame5_bowl2" name="Frame5_bowl2" type="number" placeholder="0" value="<%= @form_vals[4][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[4] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 6 -->
+<div class="control-group <%= @error_val[5] %>">
+  <label class="control-label" for="Frame6">Frame 6</label>
+  <div class="control-row">
+    <input id="Frame6_bowl1" name="Frame6_bowl1" type="number" placeholder="0" value="<%= @form_vals[5][0] %>" class="span1">
+    
+    <input id="Frame6_bowl2" name="Frame6_bowl2" type="number" placeholder="0" value="<%= @form_vals[5][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[5] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 7 -->
+<div class="control-group <%= @error_val[6] %>">
+  <label class="control-label" for="Frame7">Frame 7</label>
+  <div class="control-row">
+    <input id="Frame7_bowl1" name="Frame7_bowl1" type="number" placeholder="0" value="<%= @form_vals[6][0] %>" class="span1">
+    
+    <input id="Frame7_bowl2" name="Frame7_bowl2" type="number" placeholder="0" value="<%= @form_vals[6][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[6] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 8 -->
+<div class="control-group <%= @error_val[7] %>">
+  <label class="control-label" for="Frame8">Frame 8</label>
+  <div class="control-row">
+    <input id="Frame8_bowl1" name="Frame8_bowl1" type="number" placeholder="0" value="<%= @form_vals[7][0] %>" class="span1">
+    
+    <input id="Frame8_bowl2" name="Frame8_bowl2" type="number" placeholder="0" value="<%= @form_vals[7][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[7] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 9 -->
+<div class="control-group <%= @error_val[8] %>">
+  <label class="control-label" for="Frame9">Frame 9</label>
+  <div class="control-row">
+    <input id="Frame9_bowl1" name="Frame9_bowl1" type="number" placeholder="0" value="<%= @form_vals[8][0] %>" class="span1">
+    
+    <input id="Frame9_bowl2" name="Frame9_bowl2" type="number" placeholder="0" value="<%= @form_vals[8][1] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[8] %>" readOnly>
+  </div>
+</div>
+
+<!-- Frame 10 -->
+<div class="control-group <%= @error_val[9] %>">
+  <label class="control-label" for="Frame10">Frame 10</label>
+  <div class="control-row">
+    <input id="Frame10_bowl1" name="Frame10_bowl1" type="number" placeholder="0" value="<%= @form_vals[9][0] %>" class="span1">
+    
+    <input id="Frame10_bowl2" name="Frame10_bowl2" type="number" placeholder="0" value="<%= @form_vals[9][1] %>" class="span1">
+
+    <input id="Frame10_bowl3" name="Frame10_bowl3" type="number" placeholder="0" value="<%= @form_vals[9][2] %>" class="span1">
+  
+    <input type="text" value="<%= @scores[9] %>" readOnly>
+  </div>
+</div>
+
+
+
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Score</button>
+</div>
+
+</fieldset>
+</form>
