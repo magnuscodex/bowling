@@ -3,3 +3,8 @@ Bowling Scorecard app
 
 This application serves as a bowling score card. It is based off of the Twitter Bootstrap base application located at https://github.com/RailsApps/rails-bootstrap
 
+To install and run the following steps are necessary:
+1) git clone https://github.com/magnuscodex/bowling.git
+2) bundle install --path ./vendor
+3) bundle exec rake test
+4) ./bin/rails server
