@@ -52,7 +52,7 @@ class ScoreCardController < ApplicationController
     v1 = @form_vals[9][0]
     v2 = @form_vals[9][1]
     v3 = @form_vals[9][2]
-    if v1 > 10 or v2 > 10 or v3 > 10 or v1 < 0 or v2 < 0 or v3 < 0 or (v1 + v2 == 10 and v3 != 0)
+    if v1 > 10 or v2 > 10 or v3 > 10 or v1 < 0 or v2 < 0 or v3 < 0 or (v1 + v2 < 10 and v3 != 0) or (v1 != 10 and v1 + v2 > 10)
       @first_error = 9 if @first_error.nil?
       @error_val[9] = "has-error"
     end
@@ -89,8 +89,11 @@ class ScoreCardController < ApplicationController
 
     @scores = []
     total = 0
-    for s in score
-      total += s
+    for i in (0...10)
+      if @first_error == i
+        break
+      end
+      total += score[i]
       @scores << total
     end
 
