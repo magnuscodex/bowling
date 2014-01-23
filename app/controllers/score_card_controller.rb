@@ -17,32 +17,8 @@ class ScoreCardController < ApplicationController
       end
     end
 
-    #Handle normal error cases
-    @error_val = [nil]*10
-    first_error = nil
-    for i in (0...9)
-      if @form_vals[i][0].nil? or @form_vals[i][1].nil?
-        next
-      end
-      v1 = @form_vals[i][0]
-      v2 = @form_vals[i][1]
-      val = v1 + v2
-      if val > 10 or v1 < 0 or v2 < 0
-        @error_val[i] = "has-error" 
-        if @first_error.nil?
-          @first_error = i
-        end
-      end
-    end
-
-    #Handle last frame error case
-    v1 = @form_vals[9][0]
-    v2 = @form_vals[9][1]
-    v3 = @form_vals[9][2]
-    if v1 > 10 or v2 > 10 or v3 > 10 or v1 < 0 or v2 < 0 or v3 < 0 or (v1 + v2 < 10 and v3 != 0) or (v1 != 10 and v1 + v2 > 10)
-      @first_error = 9 if @first_error.nil?
-      @error_val[9] = "has-error"
-    end
+    @error_val = find_errors(@form_vals)
+    @first_error = @error_val.index("has-error")
 
     #Generate Frame scores
     score = [nil]*10
@@ -95,6 +71,33 @@ class ScoreCardController < ApplicationController
     end
 
     render "score_card/new"
+  end
+
+  def find_errors(frames)
+
+    #Handle normal error cases
+    errors = [nil]*10
+    for i in (0...9)
+      if frames[i][0].nil? or frames[i][1].nil?
+        next
+      end
+      v1 = frames[i][0]
+      v2 = frames[i][1]
+      val = v1 + v2
+      if val > 10 or v1 < 0 or v2 < 0
+        errors[i] = "has-error"
+      end
+    end
+
+    #Handle last frame error case
+    v1 = frames[9][0]
+    v2 = frames[9][1]
+    v3 = frames[9][2]
+    if v1 > 10 or v2 > 10 or v3 > 10 or v1 < 0 or v2 < 0 or v3 < 0 or (v1 + v2 < 10 and v3 != 0) or (v1 != 10 and v1 + v2 > 10)
+      errors[9] = "has-error"
+    end
+
+    return errors 
   end
 
 end
