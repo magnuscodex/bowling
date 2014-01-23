@@ -8,28 +8,14 @@ class ScoreCardController < ApplicationController
       @form_vals << [nil,nil]
     end
 
-    # Awkward, there's probably a better way to do this.
-    @form_vals[0][0] = params[:Frame1_bowl1].to_i
-    @form_vals[0][1] = params[:Frame1_bowl2].to_i
-    @form_vals[1][0] = params[:Frame2_bowl1].to_i
-    @form_vals[1][1] = params[:Frame2_bowl2].to_i
-    @form_vals[2][0] = params[:Frame3_bowl1].to_i
-    @form_vals[2][1] = params[:Frame3_bowl2].to_i
-    @form_vals[3][0] = params[:Frame4_bowl1].to_i
-    @form_vals[3][1] = params[:Frame4_bowl2].to_i
-    @form_vals[4][0] = params[:Frame5_bowl1].to_i
-    @form_vals[4][1] = params[:Frame5_bowl2].to_i
-    @form_vals[5][0] = params[:Frame6_bowl1].to_i
-    @form_vals[5][1] = params[:Frame6_bowl2].to_i
-    @form_vals[6][0] = params[:Frame7_bowl1].to_i
-    @form_vals[6][1] = params[:Frame7_bowl2].to_i
-    @form_vals[7][0] = params[:Frame8_bowl1].to_i
-    @form_vals[7][1] = params[:Frame8_bowl2].to_i
-    @form_vals[8][0] = params[:Frame9_bowl1].to_i
-    @form_vals[8][1] = params[:Frame9_bowl2].to_i
-    @form_vals[9][0] = params[:Frame10_bowl1].to_i
-    @form_vals[9][1] = params[:Frame10_bowl2].to_i
-    @form_vals[9][2] = params[:Frame10_bowl3].to_i #Potential extra ball
+    # The values of the bowls from the different frames should be put into
+    # the form_vals instance variale
+    for i in (0..9)
+      bowls = i == 9 ? 2 : 1
+      for j in (0..bowls)
+        @form_vals[i][j] = params["Frame#{i+1}_bowl#{j+1}".intern].to_i
+      end
+    end
 
     #Handle normal error cases
     @error_val = [nil]*10
