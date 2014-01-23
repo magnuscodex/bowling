@@ -20,55 +20,8 @@ class ScoreCardController < ApplicationController
     @error_val = find_errors(@form_vals)
     @first_error = @error_val.index("has-error")
 
-    #Generate Frame scores
-    score = [nil]*10
-    for i in (0...10)
-      #Don't score past input errors.
-      if @first_error == i
-        break
-      end
-      score[i] = @form_vals[i][0] + @form_vals[i][1]
-      #If we had a strike
-      if @form_vals[i][0] == 10
-        #The last two frames are scored differently since there is no
-        #frame 11
-        if i == 9
-          score[i] += @form_vals[i][2]
-        else
-          score[i] += @form_vals[i+1][0]
-          if @form_vals[i+1][0] == 10
-            #When scoring a strike for frame 9 if frame 10 was also a
-            #strike then the second additional bowl comes from the first
-            #additional bowl in frame 10
-            if i == 8
-              score[i] += @form_vals[i+1][1]
-            else
-              score[i] += @form_vals[i+2][0]
-            end
-          else
-            score[i] += @form_vals[i+1][1]
-          end
-        end
-      #Scoring for a spare
-      elsif score[i] == 10
-        if i == 9
-          score[i] += @form_vals[i][1]
-        else
-          score[i] += @form_vals[i+1][0]
-        end
-      end
-    end
 
-    #Running total up to a given frame
-    @scores = []
-    total = 0
-    for i in (0...10)
-      if @first_error == i
-        break
-      end
-      total += score[i]
-      @scores << total
-    end
+    @scores = score_game(@form_vals, @first_error)
 
     render "score_card/new"
   end
@@ -98,6 +51,61 @@ class ScoreCardController < ApplicationController
     end
 
     return errors 
+  end
+
+  def score_game(frames, first_error)
+
+    #Generate Frame scores
+    score = [nil]*10
+    for i in (0...10)
+      #Don't score past input errors.
+      if @first_error == i
+        break
+      end
+      score[i] = frames[i][0] + frames[i][1]
+      #If we had a strike
+      if frames[i][0] == 10
+        #The last two frames are scored differently since there is no
+        #frame 11
+        if i == 9
+          score[i] += frames[i][2]
+        else
+          score[i] += frames[i+1][0]
+          if frames[i+1][0] == 10
+            #When scoring a strike for frame 9 if frame 10 was also a
+            #strike then the second additional bowl comes from the first
+            #additional bowl in frame 10
+            if i == 8
+              score[i] += frames[i+1][1]
+            else
+              score[i] += frames[i+2][0]
+            end
+          else
+            score[i] += frames[i+1][1]
+          end
+        end
+      #Scoring for a spare
+      elsif score[i] == 10
+        if i == 9
+          score[i] += frames[i][1]
+        else
+          score[i] += frames[i+1][0]
+        end
+      end
+    end
+
+    #Running total up to a given frame
+    scores = []
+    total = 0
+    for i in (0...10)
+      if first_error == i
+        break
+      end
+      total += score[i]
+      scores << total
+    end
+
+    return scores
   end
 
 end
