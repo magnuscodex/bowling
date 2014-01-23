@@ -1,0 +1,14 @@
+
+<div class="control-group <%= @error_val[frame - 1] %>">
+  <label class="control-label" for="Frame<%= frame %>">Frame <%= frame %></label>
+  <div class="control-row">
+
+  <% for i in (1..(bowls)) %>
+    <% frame_id = "Frame#{frame}_bowl#{i}" %>
+    <input id=<%= frame_id %> name=<%= frame_id %> type="number" placeholder="0" value="<%= @form_vals[frame - 1][i - 1] %>" class="span1">
+
+  <% end %>
+    <input type="text" value="<%= @scores[frame - 1] %>" readOnly>
+
+  </div>
+</div>
